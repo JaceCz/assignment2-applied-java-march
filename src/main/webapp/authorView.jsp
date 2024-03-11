@@ -1,4 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.java3servletsjace.Author" %>
+<%@ page import="com.example.java3servletsjace.Book" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +13,24 @@
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
+    <th>Books</th>
   </tr>
-  <c:forEach var="author" items="${authors}">
-    <tr>
-      <td>${author.firstName}</td>
-      <td>${author.lastName}</td>
-    </tr>
-  </c:forEach>
+  <% List<Author> authors = (List<Author>) request.getAttribute("authors"); %>
+  <% for (Author author : authors) { %>
+  <tr>
+    <td><%= author.getFirstName() %></td>
+    <td><%= author.getLastName() %></td>
+    <td>
+      <% List<Book> books = author.getBookList(); %>
+      <% for (Book book : books) { %>
+      <%= book.getTitle() %><br/>
+      <% } %>
+    </td>
+  </tr>
+  <% } %>
 </table>
 <br/>
 <a href="index.jsp">Back to Main Page</a>
 </body>
 </html>
+
