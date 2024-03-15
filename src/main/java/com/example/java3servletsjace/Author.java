@@ -13,6 +13,7 @@ public class Author {
     private String firstName;
     private String lastName;
     private List<Book> bookList;
+
     /**
      * Constructs an Author object with the specified author ID, first name, and last name.
      *
@@ -26,6 +27,7 @@ public class Author {
         this.lastName = lastName;
         this.bookList = new ArrayList<>();
     }
+
     /**
      * Returns the ID of the author.
      *
@@ -34,6 +36,7 @@ public class Author {
     public int getAuthorID() {
         return authorID;
     }
+
     /**
      * Sets the ID of the author.
      *
@@ -50,6 +53,7 @@ public class Author {
     public String getFirstName() {
         return firstName;
     }
+
     /**
      * Sets the first name of the author.
      *
@@ -58,6 +62,7 @@ public class Author {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     /**
      * Returns the last name of the author.
      *
@@ -66,6 +71,7 @@ public class Author {
     public String getLastName() {
         return lastName;
     }
+
     /**
      * Sets the last name of the author.
      *
@@ -74,7 +80,9 @@ public class Author {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     /**
+     *
      * Returns the list of books written by the author.
      *
      * @return the list of books written by the author
@@ -82,6 +90,7 @@ public class Author {
     public List<Book> getBookList() {
         return bookList;
     }
+
     /**
      * Sets the list of books written by the author.
      *
@@ -90,6 +99,7 @@ public class Author {
     public void setBookList(List<Book> bookList) {
         this.bookList = bookList;
     }
+
     /**
      * Adds a book to the list of books written by the author.
      *

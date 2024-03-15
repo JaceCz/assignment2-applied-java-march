@@ -12,10 +12,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+/**
+ * Servlet implementation class LibraryData
+ * This servlet handles requests related to managing books and authors.
+ */
 @WebServlet(name = "LibraryData", value = "/LibraryData")
 public class LibraryData extends HttpServlet {
     private BookDatabaseManager databaseManager;
 
+    /**
+     * Initializes the servlet by loading the JDBC driver and connecting to the database.
+     * @throws ServletException if an error occurs during initialization
+     */
     @Override
     public void init() throws ServletException {
         super.init();
@@ -33,6 +41,13 @@ public class LibraryData extends HttpServlet {
         databaseManager.connect();
     }
 
+    /**
+     * Handles HTTP GET requests.
+     * @param request the HTTP servlet request
+     * @param response the HTTP servlet response
+     * @throws ServletException if an error occurs while processing the request
+     * @throws IOException if an I/O error occurs while processing the request
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String view = request.getParameter("view");
@@ -51,6 +66,13 @@ public class LibraryData extends HttpServlet {
         }
     }
 
+    /**
+     * Handles HTTP POST requests.
+     * @param request the HTTP servlet request
+     * @param response the HTTP servlet response
+     * @throws ServletException if an error occurs while processing the request
+     * @throws IOException if an I/O error occurs while processing the request
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -80,6 +102,9 @@ public class LibraryData extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 
+    /**
+     * Cleans up resources and closes the database connection when the servlet is destroyed.
+     */
     @Override
     public void destroy() {
         super.destroy();
@@ -87,4 +112,3 @@ public class LibraryData extends HttpServlet {
         databaseManager.disconnect();
     }
 }
-
